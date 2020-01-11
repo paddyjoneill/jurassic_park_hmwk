@@ -13,17 +13,15 @@ Park.prototype.removeDinosaur = function() {
 }
 
 Park.prototype.mostPopDino = function () {
-  let indexMax = 0
   let guestsAttracted = this.dinosaurs.map(dino => dino.guestsAttractedPerDay)
-  console.log(guestsAttracted);
-  guestsAttracted.reduce((max, current, index) => { if (current > max){
-    indexMax = index
-    return current
-  } else {
-    return max
-  }
-})
-  guestsAttracted.reduce()
+  let indexMax = 0
+  let highestGuests = 0
+  guestsAttracted.forEach((guests, index) => {
+    if ( guests > highestGuests) {
+      highestGuests = guests
+      indexMax = index
+    }
+  })
   return this.dinosaurs[indexMax]
 }
 
